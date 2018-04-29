@@ -1,0 +1,18 @@
+/* #586069 */
+
+
+body {
+	background-color: #ff4d4d;
+}
+
+.row {
+	margin-top: 60px;
+}
+
+.search {
+	background-color: red;
+}
+
+.info-block {
+	background-color: green;
+}
