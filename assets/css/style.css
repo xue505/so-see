@@ -1,27 +1,18 @@
-
-$orange: #757575
+/* #586069 */
 
 
 body {
 	background-color: #ff4d4d;
 }
 
-.container {
+.row {
 	margin-top: 60px;
 }
 
 .search {
-	background-color: #FFFFFF;
-	height: 700px;
+	background-color: red;
 }
 
 .info-block {
-	margin-left: 10px;
-	background-color: #FFFFFF;
-	height: 700px;
-}
-
-.xuy {
-    width: 100px;
-    height: 100px;
+	background-color: green;
 }
