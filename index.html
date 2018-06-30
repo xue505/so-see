@@ -6,36 +6,358 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search</title>
     <link href="assets/style.css" rel="stylesheet">
-    
+
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   </head>
   <body>
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Cars AU</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+          <ul class="navbar-nav ml-auto">
+
+            <!--
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light" href="#">
+              <i class="fa fa-envelope"></i> Contact</a>
+            </li> -->
+
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true">
+              <i class="fa fa-user"></i> Log in </a>
+            </li>
+
+          <!-- когда авторизован
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-user"></i> Profile </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+              <a class="dropdown-item waves-effect waves-light" href="#">My account</a>
+              <a class="dropdown-item waves-effect waves-light" href="#">Log out</a>
+            </div>
+          </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+  <div class="all">
     <div class="container">
-     <h4>Normal spacing</h4>
-     <div class="row">
-      <div class="text-center col-md-6">
-        <div class="bg-info">Widget 1</div>
-      </div> <!-- pizda skovoroda test iz sublime -->
-      <div class="text-center col-md-6">
-        <div class="bg-info">Widget 2</div>
+      <div class="row">
+        <div class="search col-md-8 pr-md-1 pl-md-1">
+          <div class="bg-light z-depth-1">
+            <div class="container search-body">
+              <div class="row">
+                <div id="el" class="col-md-2 el">
+
+                  <button v-on:click="postMake" type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Mazda</h4>
+                    <p class="amount">{{ make }}</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Toyota</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Ford</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Chevrolet</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Mercedes-Benz</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">SsangYong</h4>
+                    <p class="amount">2866</p>
+                  </button>
+                </div>
+                <div class="col-md-2 el">
+
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Opel</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Mitsubishi</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Cadillac</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Hyundai</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Jeep</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Citroen</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                </div>
+                <div class="col-md-2 el">
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Lexus</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Honda</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Infiniti</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Daewoo</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Fiat</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Great Wall</h4>
+                    <p class="amount">1426</p>
+                  </button>
+                </div>
+                <div class="col-md-2 el">
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Kia</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Dodge</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Nissan</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Renault</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Hummer</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Geely</h4>
+                    <p class="amount">1330</p>
+                  </button>
+                </div>
+                <div class="col-md-2 el">
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Suzuki</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Jaguar</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Volvo</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Subaru</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Land Rover</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Lifan</h4>
+                    <p class="amount">1933</p>
+                  </button>
+                </div>
+                <div class="col-md-2 el">
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Porsche</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">BMW</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Volkswagen</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Peugeot</h4>
+                    <p class="amount">51258</p>
+                  </button>
+                  <button type="button" class="btn but field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Chery</h4>
+                    <p class="amount">2610</p>
+                  </button>
+                  <a href="#" class="all_br">
+                    <h4 class="all_br">All Makes</h4>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-group d-flex asd" role="group">
+              <div class="btn-group">
+                <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle models" data-toggle="dropdown" disabled>
+                  Model
+                </button>
+                <div class="dropdown-menu z-depth-1 model" aria-labelledby="btnGroupDrop1">
+                  <a v-for="item in mazda_model" class="dropdown-item" href="#">
+                    {{ item.code }}
+                  </a>
+
+                  <a class="dropdown-item any" href="#">Any</a>
+
+                </div>
+              </div>
+              <div class="btn-group">
+                <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle years" data-toggle="dropdown">From</button>
+                <div class="dropdown-menu z-depth-1 year" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item any" href="#">Any</a>
+                  <a class="dropdown-item" href="#">2018</a>
+                  <a class="dropdown-item" href="#">2017</a>
+                  <a class="dropdown-item" href="#">2016</a>
+                  <a class="dropdown-item" href="#">2015</a>
+                  <a class="dropdown-item" href="#">2014</a>
+                  <a class="dropdown-item" href="#">2013</a>
+                  <a class="dropdown-item" href="#">2012</a>
+                  <a class="dropdown-item" href="#">2011</a>
+                  <a class="dropdown-item" href="#">2010</a>
+                  <a class="dropdown-item" href="#">2009</a>
+                  <a class="dropdown-item" href="#">2008</a>
+                  <a class="dropdown-item" href="#">2007</a>
+                  <a class="dropdown-item" href="#">2006</a>
+                  <a class="dropdown-item" href="#">2005</a>
+                  <a class="dropdown-item" href="#">2004</a>
+                  <a class="dropdown-item" href="#">2003</a>
+                  <a class="dropdown-item" href="#">2002</a>
+                  <a class="dropdown-item" href="#">2001</a>
+                  <a class="dropdown-item" href="#">2000</a>
+                  <a class="dropdown-item" href="#">1999</a>
+                  <a class="dropdown-item" href="#">1998</a>
+                  <a class="dropdown-item" href="#">1997</a>
+                  <a class="dropdown-item" href="#">1996</a>
+                  <a class="dropdown-item" href="#">1995</a>
+                  <a class="dropdown-item" href="#">1994</a>
+                  <a class="dropdown-item" href="#">1993</a>
+                  <a class="dropdown-item" href="#">1992</a>
+                  <a class="dropdown-item" href="#">1991</a>
+                  <a class="dropdown-item" href="#">1990</a>
+                  <a class="dropdown-item" href="#">1989</a>
+                  <a class="dropdown-item" href="#">1988</a>
+                  <a class="dropdown-item" href="#">1987</a>
+                  <a class="dropdown-item" href="#">1986</a>
+                  <a class="dropdown-item" href="#">1985</a>
+                  <a class="dropdown-item" href="#">1984</a>
+                  <a class="dropdown-item" href="#">1983</a>
+                  <a class="dropdown-item" href="#">1982</a>
+                  <a class="dropdown-item" href="#">1981</a>
+                  <a class="dropdown-item" href="#">1980</a>
+                </div>
+              </div>
+              <div class="frm">
+                <div class="md-form">
+                  <input type="number" id="minprice" class="form-control">
+                  <label for="minprice">Min price, $</label>
+                </div>
+              </div>
+              <div class="frm2">
+                <div class="md-form">
+                    <input type="number" id="maxprice" class="form-control">
+                    <label for="maxprice">Max price, $</label>
+                </div>
+              </div>
+              <button type="button" class="btn w-100 search-btn"><i class="fa fa-car" aria-hidden="true"></i>Search</button>
+            </div>
+          </div>
+          <p class="text-center adv-p"><a href="" class="adv-a">Advanced search <i class="fa fa-sort-down"></i></a></p>
+        </div>
+        <div class="col-md-4 info">
+          <div class="container z-depth-1">
+            <div class="row">
+              <a class="image1 image" href="">
+                <div class="row cont">
+                  <div class="col-md-3 svg-i svg-i1">
+
+                  </div>
+                  <div class="col-md-9">
+                    <div class="text">
+                      <h3>Heading</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <hr>
+
+              <a class="image2 image" href="">
+                <div class="row cont">
+                  <div class="col-md-3 svg-i svg-i2">
+
+                  </div>
+                  <div class="col-md-9">
+                    <div class="text">
+                      <h3>Heading</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <hr>
+
+              <a class="image3 image" href="">
+                <div class="row cont">
+                  <div class="col-md-3 svg-i svg-i3">
+
+                  </div>
+                  <div class="col-md-9">
+                    <div class="text">
+                      <h3>Heading</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-
-
-    <script>
-      feather.replace()
-    </script>
+  </div>
+    <script src="assets/script.js"></script>
     <!-- Fearther Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
